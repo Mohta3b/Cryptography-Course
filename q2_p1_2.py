@@ -1,4 +1,5 @@
 import bitcoin.wallet
+from bitcoin.core import Hash160
 from bitcoin.core import COIN, b2lx, serialize, x, lx, b2x
 from utils import *
 
@@ -34,10 +35,10 @@ def send_from_P2PKH_transaction(amount_to_send,
 
 
 if __name__ == '__main__':
-    amount_owned = 0.01760048 # BTC
-    amount_to_send = 0.014
+    amount_owned = 0.017 # BTC
+    amount_to_send = 0.016 # transaction fee = 0.017 - 0.016 = 0.001
 
-    txid_to_spend = ('6201089056804b68608b3e00aa2b6701251064d084faec7d2e655c8ef2a14f9e') # TxHash of UTXO
+    txid_to_spend = ('b9baa009551b44a091d4445be9bdf737afce282fa7c4620ffca5bcfbb4296974') # TxHash of UTXO
     utxo_index = 0 # UTXO index among transaction outputs
     
 

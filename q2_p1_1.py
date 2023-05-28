@@ -1,4 +1,5 @@
 import bitcoin.wallet
+from bitcoin.core import Hash160
 from bitcoin.core import COIN, b2lx, serialize, x, lx, b2x
 from utils import *
 
@@ -27,7 +28,7 @@ def send_from_P2PKH_transaction(amount_to_send1,
     txout2 = create_txout(amount_to_send2, txout2_scriptPubKey)
 
 
-    txin_scriptPubKey = P2PKH_scriptPubKey(my_address)
+    txin_scriptPubKey = P2PKH_scriptPubKey(my_public_key)
     txin = create_txin(txid_to_spend, utxo_index)
     txin_scriptSig = P2PKH_scriptSig(txin, [txout1, txout2], txin_scriptPubKey)
 
@@ -38,10 +39,10 @@ def send_from_P2PKH_transaction(amount_to_send1,
 
 if __name__ == '__main__':
     amount_owned = 0.01787789 # BTC
-    amount_to_send1 = 0.0165
+    amount_to_send1 = 0.017
     amount_to_send2 = amount_owned - amount_to_send1 - 0.0001
     txid_to_spend = ('f95c3c2dd7fc6c6c95e5db6b0d540caedf644807d80fca665fc302e1338230c8') # TxHash of UTXO
-    utxo_index = 0 # UTXO index among transaction outputs
+    utxo_index = 1 # UTXO index among transaction outputs
     
 
     print("address base58 =", my_address) # Prints your address in base58
