@@ -1,7 +1,11 @@
-from q1_p1 import generate_private_key, generate_public_key
+import bitcoin.wallet
+from bitcoin.core import Hash160
+from bitcoin.core import COIN, b2lx, serialize, x, lx, b2x
+from utils import *
 import colorama
+from q1_p1 import generate_private_key, generate_public_key
 
-def generate_vanity_address(vanity_letters):
+def generate_vanity_address(vanity_letters="mir"):
     vanity_len = len(vanity_letters)
     count = 0
     ten_thousand_count = 0

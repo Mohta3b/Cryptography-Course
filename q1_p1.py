@@ -64,7 +64,7 @@ def generate_public_key(private_key):
     hash_with_prefix_and_checksum = hash_with_prefix + checksum
 
     # Convert the hash with prefix and checksum to Base58 format (Test network address)
-    address = base58.b58encode(hash_with_prefix_and_checksum).decode('utf-8')
+    address = base58.b58encode(hash_with_prefix_and_checksum)
 
     return address
 
