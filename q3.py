@@ -32,8 +32,9 @@ def coinbaseTransaction(BLOCK_REWARD, coinbase_txid_to_spend, coinbase_utxo_inde
     return CMutableTransaction([txin], [txout])
 
 def get_merkleRoot(coinbase_tx):
-    merkle_root = b2lx(Hash(coinbase_tx.serialize()))
-    return merkle_root, coinbase_tx.serialize()
+    coinbase_serialized = b2x(coinbase_tx.serialize())
+    merkle_root = b2lx(coinbase_tx.GetTxid())
+    return merkle_root, coinbase_serialized
 
 
 def get_partial_header(block_version, last_block_hash, merkle_root, bits):
@@ -54,7 +55,11 @@ def mine_block(partial_header, target):
 def mine(last_block_hash, coinbase_data_hex):
     bits = '1f010000'
     target = get_target(bits)
-    coinbase_tx = coinbaseTransaction(BLOCK_REWARD, last_block_hash, 0, P2PKH_scriptPubKey(my_public_key), [coinbase_data_hex])
+    coinbase_txid_to_spend = 64 * '0'
+    cdt_len = len(coinbase_data_hex)//2
+    coinbase_script_sig = CScript([int(coinbase_data_hex, 16).to_bytes(cdt_len, 'big')])
+    coinbase_tx = coinbaseTransaction(BLOCK_REWARD, coinbase_txid_to_spend, 0, P2PKH_scriptPubKey(my_public_key), coinbase_script_sig)
+    print("type=",type(coinbase_tx))
     merkle_root, coinbase_tx_serialized = get_merkleRoot(coinbase_tx)
     partial_header = get_partial_header(1, last_block_hash, merkle_root, bits)
     header, block_hash = mine_block(partial_header, target)
@@ -72,7 +77,7 @@ if __name__ == '__main__':
     
     print("Block hash: ", b2lx(block_hash))
     print("Block header: ", b2x(header))
-    print("Block body: ", b2x(block_body))
+    print("Block body: ", block_body)
     print("Block size: ", len(header) + len(block_body))
     print("Block reward: ", BLOCK_REWARD)
     print("Block version: ", 1)
