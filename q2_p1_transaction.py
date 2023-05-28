@@ -24,11 +24,11 @@ def send_from_P2PKH_transaction(amount_to_send, txid_to_spend, utxo_index,
                                 txout_scriptPubKey):
     txout = create_txout(amount_to_send, txout_scriptPubKey)
 
-    txin_scriptPubKey = P2PKH_scriptPubKey(my_address)
+    txin_scriptPubKey = P2PKH_scriptPubKey(my_public_key)
     txin = create_txin(txid_to_spend, utxo_index)
-    txin_scriptSig = P2PKH_scriptSig(txin, [txout], txin_scriptPubKey)
+    txin_scriptSig = P2PKH_scriptSig(txin, txout, txin_scriptPubKey)
 
-    new_tx = create_signed_transaction(txin, [txout], txin_scriptPubKey,
+    new_tx = create_signed_transaction(txin, txout, txin_scriptPubKey,
                                        txin_scriptSig)
 
     return broadcast_transaction(new_tx)

@@ -1,0 +1,53 @@
+/bin/python3 /home/mohta3b/UT/Crypto/q2_p1_transaction.py
+mmirxVXgCxyWMdXr3AH3zUift4RJegHxbj
+0480228da728a44d05cc87f3cf9ac32a6455e6aa921573efb542e1fa8e57ca865b510209c259d5c22370d6a5ec608d42aef5665b0870d840fa65699c52f4f365a2
+09c2561cdeba9782ab4c58d473aadb46da56cee9d1eb584f5f98b8cb22eb2414
+201 Created
+{
+  "tx": {
+    "block_height": -1,
+    "block_index": -1,
+    "hash": "36f9cc2fbd8b000fdaa8314ee1955af97c0db58e5564b393e81d4f796e4ebde7",
+    "addresses": [
+      "mmirxVXgCxyWMdXr3AH3zUift4RJegHxbj",
+      "n1EJPZwcJvFeMWWRj6Zz2CNAyXHUhXqS1q"
+    ],
+    "total": 1500000,
+    "fees": 741308,
+    "size": 223,
+    "vsize": 223,
+    "preference": "high",
+    "relayed_by": "213.142.159.95",
+    "received": "2023-05-28T10:12:42.968734269Z",
+    "ver": 1,
+    "double_spend": false,
+    "vin_sz": 1,
+    "vout_sz": 1,
+    "confirmations": 0,
+    "inputs": [
+      {
+        "prev_hash": "2b83e1c8a381acee46e837ca8d94a9eb2d0f8a3a31132de83aaa7c68b0b432f3",
+        "output_index": 0,
+        "script": "4730440220034c19e20dc4a5f86ec1702f5092248f0240b941ab57c77ce111c51181b95f2f02205bb90278bd99f72f8c7a0bc5e004eaff78fc6fb4255c6785f76191fd2a749d0301410480228da728a44d05cc87f3cf9ac32a6455e6aa921573efb542e1fa8e57ca865b510209c259d5c22370d6a5ec608d42aef5665b0870d840fa65699c52f4f365a2",
+        "output_value": 2241308,
+        "sequence": 4294967295,
+        "addresses": [
+          "mmirxVXgCxyWMdXr3AH3zUift4RJegHxbj"
+        ],
+        "script_type": "pay-to-pubkey-hash",
+        "age": 2435732
+      }
+    ],
+    "outputs": [
+      {
+        "value": 1500000,
+        "script": "76a914d83c3806de072997ba8ae91890890ef80aff3aa188ac",
+        "addresses": [
+          "n1EJPZwcJvFeMWWRj6Zz2CNAyXHUhXqS1q"
+        ],
+        "script_type": "pay-to-pubkey-hash"
+      }
+    ]
+  }
+}
+mohta3b@Mohta3b:~/UT/Crypto$ 
